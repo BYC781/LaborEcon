@@ -1,0 +1,14 @@
+--------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\nest\Dropbox\causal_data_course\2022_spring\Class_Data\log\reg.log
+  log type:  text
+ opened on:  21 Mar 2022, 14:01:09
+
+. set more off
+
+. 
+. use "$rawdata\cps_2014_16.dta",replace
+
+. 
+end of do-file
+

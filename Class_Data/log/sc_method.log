@@ -1,0 +1,427 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\nest\Dropbox\causal_data_course\2022_spring\Class_Data\log\sc_method.log
+  log type:  text
+ opened on:  20 Apr 2022, 11:21:06
+
+. set more off
+
+. 
+. use $rawdata\smoking_ca.dta,replace
+(Tobacco Sales in 39 US States)
+
+. 
+end of do-file
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. use $rawdata\smoking_ca.dta,replace
+(Tobacco Sales in 39 US States)
+
+. 
+. ** Step 1: Setup Panel Data
+. tsset state year
+       panel variable:  state (strongly balanced)
+        time variable:  year, 1970 to 2000
+                delta:  1 unit
+
+. 
+. 
+. ** Step 6: Display Effect Graphs (use real file)
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989) replace
+command synth_runner is unrecognized
+r(199);
+
+end of do-file
+
+r(199);
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. 
+. ** Step 0: install packages
+. net from "https://web.stanford.edu/~jhain/Synth"
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://web.stanford.edu/~jhain/Synth/
+Synthetic Control Methods for Comparative Case Studies
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Alberto Abadie, Kennedy School of Government, Harvard University and NBER
+Jens Hainmueller, Department of Political Science, MIT
+Alexis Diamond, IFC
+
+Also see the homepage for the paper that describes the method.
+
+PACKAGES you could -net describe-:
+    synth             Synthetic Control Methods
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+. net install synth, all replace force
+checking synth consistency and verifying not already installed...
+installing into C:\Users\ttyang\ado\plus\...
+installation complete.
+
+copying into current directory...
+      copying  smoking.dta
+ancillary files successfully copied.
+
+. 
+. //ssc install synth, replace all
+. net install synth_runner, from(https://raw.github.com/bquistorff/synth_runner/master/) replace
+checking synth_runner consistency and verifying not already installed...
+installing into C:\Users\ttyang\ado\plus\...
+installation complete.
+
+. 
+end of do-file
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. use $rawdata\smoking_ca.dta,replace
+(Tobacco Sales in 39 US States)
+
+. 
+. ** Step 1: Setup Panel Data
+. tsset state year
+       panel variable:  state (strongly balanced)
+        time variable:  year, 1970 to 2000
+                delta:  1 unit
+
+. 
+. 
+. ** Step 6: Display Effect Graphs (use real file)
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989) replace
+Estimating the treatment effects
+Estimating the possible placebo effects (one set for each of the 1 treatment periods)
+|                                    | Total: 38
+.....................................| 12.00s elapsed. 
+
+Conducting inference: 5 steps, and 38 placebo averages
+Step 1... Finished
+Step 2... Finished
+Step 3... Finished
+Step 4... Finished
+Step 5... Finished
+
+Post-treatment results: Effects, p-values, standardized p-values
+
+             | estimates      pvals  pvals_std 
+-------------+---------------------------------
+          c1 | -7.887098   .1315789          0 
+          c2 | -9.693599   .1842105          0 
+          c3 |  -13.8027   .2105263          0 
+          c4 |   -13.344   .1315789          0 
+          c5 |  -17.0624   .1052632          0 
+          c6 |  -20.8943   .0789474          0 
+          c7 |  -19.8568   .1315789   .0263158 
+          c8 |  -21.0405   .1578947          0 
+          c9 |  -21.4914   .1052632   .0263158 
+         c10 |  -19.1642   .1842105   .0263158 
+         c11 |   -24.554   .1052632          0 
+         c12 |  -24.2687   .1052632   .0263158 
+
+. 
+. ** Use all untreated units
+. single_treatment_graphs, trlinediff(-1) effects_ylabels(-30(10)30) effects_ymax(35) effects_ymin(-35)
+Effect variable [effect] does not exist, did you use the -, gen_vars- option in -synth_runner-?
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. use $rawdata\smoking_ca.dta,replace
+(Tobacco Sales in 39 US States)
+
+. 
+. ** Step 1: Setup Panel Data
+. tsset state year
+       panel variable:  state (strongly balanced)
+        time variable:  year, 1970 to 2000
+                delta:  1 unit
+
+. 
+. 
+. ** Step 6: Display Effect Graphs (use real file)
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989) keep("$rawdata\results") replace
+Estimating the treatment effects
+Estimating the possible placebo effects (one set for each of the 1 treatment periods)
+|                                    | Total: 38
+.....................................| 11.00s elapsed. 
+
+Conducting inference: 5 steps, and 38 placebo averages
+Step 1... Finished
+Step 2... Finished
+Step 3... Finished
+Step 4... Finished
+Step 5... Finished
+
+Post-treatment results: Effects, p-values, standardized p-values
+
+             | estimates      pvals  pvals_std 
+-------------+---------------------------------
+          c1 | -7.887098   .1315789          0 
+          c2 | -9.693599   .1842105          0 
+          c3 |  -13.8027   .2105263          0 
+          c4 |   -13.344   .1315789          0 
+          c5 |  -17.0624   .1052632          0 
+          c6 |  -20.8943   .0789474          0 
+          c7 |  -19.8568   .1315789   .0263158 
+          c8 |  -21.0405   .1578947          0 
+          c9 |  -21.4914   .1052632   .0263158 
+         c10 |  -19.1642   .1842105   .0263158 
+         c11 |   -24.554   .1052632          0 
+         c12 |  -24.2687   .1052632   .0263158 
+
+. merge 1:1 state year using "$rawdata\results", nogenerate
+(label state already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                             1,209  
+    -----------------------------------------
+
+. gen cigsale_synth = cigsale-effect
+
+. 
+. save $rawdata\scm_results,replace
+file D:\nest\Dropbox\causal_data_course\2022_spring\Class_Data\rawdata\scm_results.dta saved
+
+. 
+. 
+. ** Use all untreated units
+. single_treatment_graphs, trlinediff(-1) effects_ylabels(-30(10)30) effects_ymax(35) effects_ymin(-35)
+(13 real changes made)
+(3 real changes made)
+
+. graph export "$pic/effects.png", as(png) replace
+(file D:\nest\Dropbox\Courses\Causal_Inference_Big_Data\Slides\L11_Sythetic_control/effects.png written in PNG format)
+
+. 
+. ** Use the untreated units whose RMSPE is lower than 5 times of the treated unit's RMSPE
+. keep if pre_rmspe<=1.943233*5
+(186 observations deleted)
+
+. single_treatment_graphs, trlinediff(-1) effects_ylabels(-30(10)30) effects_ymax(35) effects_ymin(-35)
+(3 real changes made)
+(0 real changes made)
+
+. graph export "$pic/effects_2.png", as(png) replace
+(note: file D:\nest\Dropbox\Courses\Causal_Inference_Big_Data\Slides\L11_Sythetic_control/effects_2.png not found)
+(file D:\nest\Dropbox\Courses\Causal_Inference_Big_Data\Slides\L11_Sythetic_control/effects_2.png written in PNG format)
+
+. 
+end of do-file
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. effect_graphs, trlinediff(-1)
+
+. 
+end of do-file
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. ** Step 7: use your own code to draw picture
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989)  pvals1s pre_limit_mult(5) keep("$rawda
+> ta\results") replace
+Estimating the treatment effects
+Estimating the possible placebo effects (one set for each of the 1 treatment periods)
+|                              | Total: 32
+...............................| 8.00s elapsed. 
+
+Conducting inference: 5 steps, and 31 placebo averages
+Step 1... Finished
+Step 2... Finished
+Step 3... Finished
+Step 4... Finished
+Step 5... Finished
+
+Post-treatment results: Effects, p-values, standardized p-values
+
+             | estimates      pvals  pvals_std 
+-------------+---------------------------------
+          c1 |   -4.4424   .2580645   .2258065 
+          c2 |  -13.3737   .0322581          0 
+          c3 |  -19.1064   .0322581   .0645161 
+          c4 |  -18.9248   .0645161          0 
+          c5 |  -23.1279          0          0 
+          c6 |  -30.9173          0          0 
+          c7 |  -24.5416   .0645161   .0645161 
+          c8 |  -22.7387   .0645161   .0967742 
+          c9 |  -23.6115   .0645161   .0645161 
+         c10 |  -27.3355   .0322581   .0645161 
+         c11 |  -29.6609          0   .0322581 
+         c12 |  -28.4769   .0322581   .0322581 
+
+. merge 1:1 state year using "$rawdata\results", nogenerate
+(label state already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                             1,023  
+    -----------------------------------------
+
+. gen cigsale_synth = cigsale-effect
+variable cigsale_synth already defined
+r(110);
+
+end of do-file
+
+r(110);
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. ** Step 7: use your own code to draw picture
+. clear
+
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989)  pvals1s pre_limit_mult(5) keep("$rawda
+> ta\results") replace
+time variable not set, use tsset varname ...
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. ** Step 7: use your own code to draw picture
+. clear
+
+. 
+. use $rawdata\smoking_ca.dta,replace
+(Tobacco Sales in 39 US States)
+
+. 
+. tsset state year
+       panel variable:  state (strongly balanced)
+        time variable:  year, 1970 to 2000
+                delta:  1 unit
+
+. 
+. 
+. synth_runner cigsale beer(1984(1)1988) lnincome retprice age15to24 cigsale(1988) cigsale(1980) cigsale(1975), trunit(3) trperiod(1989)  pvals1s pre_limit_mult(5) keep("$rawda
+> ta\results") replace
+Estimating the treatment effects
+Estimating the possible placebo effects (one set for each of the 1 treatment periods)
+|                                    | Total: 38
+.....................................| 12.00s elapsed. 
+
+Conducting inference: 5 steps, and 32 placebo averages
+Step 1... Finished
+Step 2... Finished
+Step 3... Finished
+Step 4... Finished
+Step 5... Finished
+
+Post-treatment results: Effects, p-values, standardized p-values
+
+             | estimates      pvals  pvals_std 
+-------------+---------------------------------
+          c1 | -7.887098      .0625          0 
+          c2 | -9.693599     .09375          0 
+          c3 |  -13.8027       .125          0 
+          c4 |   -13.344     .03125          0 
+          c5 |  -17.0624     .03125          0 
+          c6 |  -20.8943     .03125          0 
+          c7 |  -19.8568     .09375     .03125 
+          c8 |  -21.0405       .125          0 
+          c9 |  -21.4914      .0625     .03125 
+         c10 |  -19.1642     .15625     .03125 
+         c11 |   -24.554     .09375          0 
+         c12 |  -24.2687     .09375     .03125 
+
+. merge 1:1 state year using "$rawdata\results", nogenerate
+(label state already defined)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                             1,209  
+    -----------------------------------------
+
+. gen cigsale_synth = cigsale-effect
+
+. 
+. save $rawdata\scm_results,replace
+file D:\nest\Dropbox\causal_data_course\2022_spring\Class_Data\rawdata\scm_results.dta saved
+
+. 
+. keep if pre_rmspe<=1.943233*5
+(186 observations deleted)
+
+. 
+. local figure = ""
+
+. forv i = 4(1)39{
+  2.         local figure = `"`figure' (line effect year if state==`i', mcolor(gs12) lc(gs12) lw(vthin))"'
+  3. }
+
+. graph twoway `figure' /// 
+> (line effect year if state==1, mcolor(gs12) lc(gs12) lw(vthin)) (line effect year if state==2, mcolor(gs12) lc(gs12) lw(vthin)) (connect effect year if state==3, mcolor(maroo
+> n) lc(maroon)),  leg(order(39 "CA Estimate"  1 "Placebo Estimates") ) ytitle("SCM Estimates") xtitle("Year") 
+
+. 
+. graph export "$pic/effects_3.png", as(png) replace
+(file D:\nest\Dropbox\Courses\Causal_Inference_Big_Data\Slides\L11_Sythetic_control/effects_3.png written in PNG format)
+
+. 
+end of do-file
+
+. do "C:\Users\ttyang\AppData\Local\Temp\STD2d74_000000.tmp"
+
+. 
+. 
+. ** Table : i.edu_hard_use#i.treatment
+. forv i=1(1)1 {
+  2. 
+. use "$rawdata\socialchange_reg_3_estimated_2021.dta",replace
+  3. 
+. cd $table
+  4. keep if S`i'==1 
+  5. 
+. //drop if run_q==-2 //| run_q==-3 | run_q==-1
+. 
+. sum identity_use if run<0 & run>=-24 & early==1
+  6. local mean = `r(mean)'
+  7. local mean = round(`mean',.001)
+  8. 
+. reg identity_use i.edu_hard_use#i.treatment i.edu_hard_use##c.run i.edu_hard_use##c.tr_run i.visit_year, cl(run)
+  9. outreg2 using Table8_identity_use_main_S`i'.tex, replace  ctitle() title() nocon ///
+> keep(i.edu_hard_use#i.treatment) label addtext(Baseline Mean, `mean',Linear Spline, Yes, Survey FE, Yes,Hometown FE, No, Demographic, No,Home-Hoklo-Ratio, No) //, Quadratic S
+> pline, No)
+ 10. 
+. reg identity_use  i.edu_hard_use#i.treatment i.edu_hard_use##c.run i.edu_hard_use##c.tr_run i.visit_year $R2  , cl(run)
+ 11. outreg2 using Table8_identity_use_main_S`i'.tex, append  ctitle() title()  nocon ///
+> keep(i.edu_hard_use#i.treatment) label addtext(Baseline Mean, `mean',Linear Spline, Yes, Survey FE, Yes,Hometown FE, Yes, Demographic, No,Home-Hoklo-Ratio, No) //, Quadratic 
+> Spline, No)
+ 12. 
+. reg identity_use i.edu_hard_use#i.treatment i.edu_hard_use##c.run i.edu_hard_use##c.tr_run i.visit_year $R2 $C1  , cl(run)
+ 13. outreg2 using Table8_identity_use_main_S`i'.tex, append   ctitle() title() nocon ///
+> keep(i.edu_hard_use#i.treatment) label addtext(Baseline Mean, `mean',Linear Spline, Yes, Survey FE, Yes,Hometown FE, Yes, Demographic, Yes,Home-Hoklo-Ratio, No) //, Quadratic
+>  Spline, No)
+ 14. 
+. reg identity_use  i.edu_hard_use#i.treatment i.edu_hard_use##c.run i.edu_hard_use##c.tr_run i.visit_year $R2 $C1 $C2 , cl(run)
+ 15. outreg2 using Table8_identity_use_main_S`i'.tex, append   ctitle() title() nocon ///
+> keep(i.edu_hard_use#i.treatment) label addtext(Baseline Mean, `mean',Linear Spline, Yes, Survey FE, Yes,Hometown FE, Yes, Demographic, Yes, Home-Hoklo-Ratio, Yes) //, Quadrat
+> ic Spline, No)
+ 16. 
+. /*
+> reg identity_use  $R1 $R2 $C1 $C2 $C3 , cl(run)
+> outreg2 using identity_use_main_S`i'.tex, append   ctitle() title() nocon ///
+> keep(treatment) label addtext(Linear Spline, Yes, Survey FE, Yes,Hometown FE, Yes, Demographic, Yes, Birth Month FE, No, Quadratic Spline, Yes)
+> */
+. 
+. }
+file D:\nest\Dropbox\causal_data_course\2022_spring\Class_Data\rawdata\socialchange_reg_3_estimated_2021.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+

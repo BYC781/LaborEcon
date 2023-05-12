@@ -1,0 +1,510 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/bychen/Documents/LaborEcon/term/hw1_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 7 Apr 2023, 15:33:17
+
+{com}. do "/var/folders/wq/jf6rm68d1r34crmr79rcskzc0000gn/T//SD25397.000000"
+{txt}
+{com}. clear
+{txt}
+{com}. cd /Users/bychen/Documents/LaborEcon/term/raw/110manpower
+{res}/Users/bychen/Documents/LaborEcon/term/raw/110manpower
+{txt}
+{com}. use "mu110.dta", clear
+{txt}
+{com}. drop if b1_a == 0
+{txt}(27,639 observations deleted)
+
+{com}. tab b1_c1
+
+    {txt}C.你是否 {c |}
+    因疫情而 {c |}
+    曾「遠距 {c |}
+    工作」或 {c |}
+    「居家上 {c |}
+    班」?(1) {c |}
+    是，目前 {c |}
+    仍持續嗎 {c |}
+           ? {c |}      Freq.     Percent        Cum.
+{hline 13}{c +}{hline 35}
+跳答或不適用 {c |}{res}     23,554       85.64       85.64
+{txt}     是(接2) {c |}{res}         84        0.31       85.95
+{txt}     否(接2) {c |}{res}      3,864       14.05      100.00
+{txt}{hline 13}{c +}{hline 35}
+       Total {c |}{res}     27,502      100.00
+{txt}
+{com}. inspect id a2 a5_3 a21_2 a22 b1_a b1_c1
+
+{res}id:  樣本編號                                   {txt}Number of Observations
+{hline 13}                          {hline 39}
+                                             Total      Integers   Nonintegers
+{c |}                            Negative            {res}-             -             -
+{txt}{c |}                            Zero                {res}-             -             -
+{txt}{c |}                            Positive            {res}-             -             -
+{txt}{c |}                                      {hline 11}   {hline 11}   {hline 11}
+{c |}                            Total               {res}-             -             -
+{txt}{c |}                            Missing   {res}     27,502
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}.             -9.0e+307                     27,502
+   (0 unique value)
+
+a2:  性別                                       {txt}Number of Observations
+{hline 9}                              {hline 39}
+                                             Total      Integers   Nonintegers
+{c |}  {res}#                         {txt}Negative            {res}-             -             -
+{txt}{c |}  {res}#                         {txt}Zero                {res}-             -             -
+{txt}{c |}  {res}#   #                     {txt}Positive  {res}     27,502        27,502             -
+{txt}{c |}  {res}#   #                               {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}  {res}#   #                     {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}#   #                     {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}1                     2                     27,502
+   (2 unique values)
+
+      {txt}a2 is labeled and all values are documented in the label.
+
+{res}a5_3:  教育程度                                 {txt}Number of Observations
+{hline 15}                        {hline 39}
+                                             Total      Integers   Nonintegers
+{c |}              {res}#             {txt}Negative            {res}-             -             -
+{txt}{c |}              {res}#             {txt}Zero                {res}-             -             -
+{txt}{c |}          {res}#   #             {txt}Positive  {res}     27,502        27,502             -
+{txt}{c |}          {res}#   #                       {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}          {res}#   #             {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}.   #   #   #   #         {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}1                     9                     27,502
+   (9 unique values)
+
+      {txt}a5_3 is labeled and all values are documented in the label.
+
+{res}a21_2:  你的工作場所是什麼?A.主要工作的         {txt}Number of Observations
+{hline 39}{hline 39}
+                                             Total      Integers   Nonintegers
+{c |}          {res}#                 {txt}Negative            {res}-             -             -
+{txt}{c |}          {res}#                 {txt}Zero                {res}-             -             -
+{txt}{c |}          {res}#       #         {txt}Positive  {res}     27,502        27,502             -
+{txt}{c |}      {res}#   #       #                   {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}  {res}#   #   #       #         {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}#   #   #   #   #         {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}1                    96                     27,502
+  (89 unique values)
+
+      {txt}a21_2 is labeled and all values are documented in the label.
+
+{res}a22:  你在工作場所內的職務是什麼?A.主要         {txt}Number of Observations
+{hline 39}{hline 39}
+                                             Total      Integers   Nonintegers
+{c |}      {res}#                     {txt}Negative            {res}-             -             -
+{txt}{c |}      {res}#   #                 {txt}Zero                {res}-             -             -
+{txt}{c |}      {res}#   #   #             {txt}Positive  {res}     27,502        27,502             -
+{txt}{c |}  {res}#   #   #   #                       {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}  {res}#   #   #   #   #         {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}#   #   #   #   #         {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}11                   99                     27,502
+  (38 unique values)
+
+      {txt}a22 is labeled and all values are documented in the label.
+
+{res}b1_a:  A.你主要工作的每月收入是多少?__元        {txt}Number of Observations
+{hline 40}{hline 39}
+                                             Total      Integers   Nonintegers
+{c |}  {res}#                         {txt}Negative            {res}-             -             -
+{txt}{c |}  {res}#                         {txt}Zero                {res}-             -             -
+{txt}{c |}  {res}#                         {txt}Positive  {res}     27,502        27,502             -
+{txt}{c |}  {res}#                                   {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}  {res}#                         {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}#   .   .   .   .         {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}1                999200                     27,502
+(More than 99 unique values)
+
+      {txt}b1_a is labeled but 27457 values are NOT documented in the label.
+
+{res}b1_c1:  C.你是否因疫情而曾「遠距工作」或        {txt}Number of Observations
+{hline 40}{hline 39}
+                                             Total      Integers   Nonintegers
+{c |}  {res}#                         {txt}Negative            {res}-             -             -
+{txt}{c |}  {res}#                         {txt}Zero      {res}     23,554        23,554             -
+{txt}{c |}  {res}#                         {txt}Positive  {res}      3,948         3,948             -
+{txt}{c |}  {res}#                                   {txt}{hline 11}   {hline 11}   {hline 11}
+{c |}  {res}#                         {txt}Total     {res}     27,502        27,502             -
+{txt}{c |}  {res}#   .   .                 {txt}Missing             {res}-
+{txt}{c +}{hline 22}{col 40}{hline 11}
+{res}0                     2                     27,502
+   (3 unique values)
+
+      {txt}b1_c1 is labeled and all values are documented in the label.
+
+{com}. duplicates report
+
+{p 0 4}{txt}Duplicates in terms of {txt} all variables{p_end}
+
+{hline 10}{c TT}{hline 27}
+   copies {c |} observations       surplus
+{hline 10}{c +}{hline 27}
+        1 {c |}        {res}27502             0
+{txt}{hline 10}{c BT}{hline 27}
+
+{com}. duplicates drop id, force
+
+{p 0 4}{txt}Duplicates in terms of {res} id{p_end}
+
+{txt}(1,180 observations deleted)
+
+{com}. gen year = 2021
+{txt}
+{com}. egen median_inc = pctile(b1_a), p(50)
+{txt}
+{com}. label var median_inc `"The median of monthly income of all observations."'
+{txt}
+{com}. recode b1_c1 (0 = .)(1 = 1) (2 = 0), generate(wfh)
+{txt}(26242 differences between b1_c1 and wfh)
+
+{com}. save "/Users/bychen/Documents/LaborEcon/term/work/mu110_edit.dta", replace
+{txt}file /Users/bychen/Documents/LaborEcon/term/work/mu110_edit.dta saved
+
+{com}. 
+. 
+. clear
+{txt}
+{com}. cd /Users/bychen/Documents/LaborEcon/term/raw/109manpower
+{res}/Users/bychen/Documents/LaborEcon/term/raw/109manpower
+{txt}
+{com}. use "mu109.dta", clear
+{txt}
+{com}. drop if b1_a == 0
+{txt}(28,574 observations deleted)
+
+{com}. gen year = 2020
+{txt}
+{com}. duplicates drop id, force
+
+{p 0 4}{txt}Duplicates in terms of {res} id{p_end}
+
+{txt}(955 observations deleted)
+
+{com}. save "/Users/bychen/Documents/LaborEcon/term/work/mu109_edit.dta", replace
+{txt}file /Users/bychen/Documents/LaborEcon/term/work/mu109_edit.dta saved
+
+{com}. 
+. 
+. 
+. clear
+{txt}
+{com}. cd /Users/bychen/Documents/LaborEcon/term/work
+{res}/Users/bychen/Documents/LaborEcon/term/work
+{txt}
+{com}. use "mu110_edit.dta", replace
+{txt}
+{com}. append using "mu109_edit.dta"
+{txt}(label area already defined)
+(label county already defined)
+(label a0 already defined)
+(label a1 already defined)
+(label a2 already defined)
+(label a4 already defined)
+(label a5_1 already defined)
+(label a5_2 already defined)
+(label a5_3 already defined)
+(label a5_4 already defined)
+(label a6 already defined)
+(label a7 already defined)
+(label a8 already defined)
+(label a9 already defined)
+(label a10_1a already defined)
+(label a10_1b already defined)
+(label a10_2a already defined)
+(label a10_2b already defined)
+(label a10_1 already defined)
+(label a10_2 already defined)
+(label a11 already defined)
+(label a12 already defined)
+(label a13 already defined)
+(label a14 already defined)
+(label a15 already defined)
+(label a16_1 already defined)
+(label a16_2 already defined)
+(label a16_3 already defined)
+(label a16_4 already defined)
+(label a16_5 already defined)
+(label a16_6 already defined)
+(label a17 already defined)
+(label a18 already defined)
+(label a19 already defined)
+(label a20 already defined)
+(label a21_1 already defined)
+(label a21_2 already defined)
+(label a21_3 already defined)
+(label a21_b2 already defined)
+(label a22 already defined)
+(label a22b already defined)
+(label a23 already defined)
+(label a23b already defined)
+(label b1_a already defined)
+(label b1_b already defined)
+(label b2_a already defined)
+(label b2_b already defined)
+(label b2_c already defined)
+(label b2_d already defined)
+(label b2_e already defined)
+(label b3_y already defined)
+(label b3_m already defined)
+(label b4 already defined)
+(label b5 already defined)
+(label b6_a already defined)
+(label b6_b already defined)
+(label b6_c already defined)
+(label b7 already defined)
+(label b8 already defined)
+(label b9 already defined)
+(label b10_a already defined)
+(label b10_b already defined)
+(label b10_c already defined)
+(label b10_d already defined)
+(label b11_a1 already defined)
+(label b11_a2_1 already defined)
+(label b11_a2_2 already defined)
+(label b11_a2_3 already defined)
+(label b11_a2_4 already defined)
+(label b11_a2_5 already defined)
+(label b11_a2_6 already defined)
+(label b11_a2_7 already defined)
+(label b12_a1 already defined)
+(label b12_a2 already defined)
+(label b12_a3 already defined)
+(label b12_b1 already defined)
+(label b12_b2_1 already defined)
+(label b12_b2_2 already defined)
+(label b12_b2_3 already defined)
+(label b13_1 already defined)
+(label b13_2 already defined)
+(label b14 already defined)
+(label b15 already defined)
+(label b16_a1 already defined)
+(label b16_a2 already defined)
+(label b16_a3 already defined)
+(label b16_a4 already defined)
+(label b16_a5 already defined)
+(label b16_b already defined)
+(label b17_a1 already defined)
+(label b17_a2 already defined)
+(label b17_a3 already defined)
+(label b17_a4 already defined)
+(label b17_a5 already defined)
+(label b17_a6 already defined)
+(label b17_b already defined)
+(label b17_c already defined)
+
+{com}. duplicates report id
+
+{p 0 4}{txt}Duplicates in terms of {res} id{p_end}
+
+{txt}{hline 10}{c TT}{hline 27}
+   copies {c |} observations       surplus
+{hline 10}{c +}{hline 27}
+        1 {c |}        {res}49435             0
+        {txt}2 {c |}         {res}2650          1325
+{txt}{hline 10}{c BT}{hline 27}
+
+{com}. drop wfh
+{txt}
+{com}. recode b1_c1 (0 = .)(1 = 1) (2 = 0)(. = 0), generate(wfh)
+{txt}(52005 differences between b1_c1 and wfh)
+
+{com}. histogram b2_b
+{txt}(bin={res}47{txt}, start={res}1{txt}, width={res}2.0638298{txt})
+{res}{txt}
+{com}. twoway scatter b1_a wfh if wfh !=.
+{res}{txt}
+{com}. regress b1_a wfh if wfh !=.
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    29,509
+{txt}{hline 13}{c +}{hline 34}   F(1, 29507)     = {res}    81.43
+{txt}       Model {c |} {res} 7.3279e+10         1  7.3279e+10   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.6554e+13    29,507   899917918   {txt}R-squared       ={res}    0.0028
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0027
+{txt}       Total {c |} {res} 2.6627e+13    29,508   902370774   {txt}Root MSE        =   {res}  29999
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        b1_a{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}wfh {c |}{col 14}{res}{space 2} 30306.35{col 26}{space 2} 3358.505{col 37}{space 1}    9.02{col 46}{space 3}0.000{col 54}{space 4} 23723.53{col 67}{space 3} 36889.17
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  41932.4{col 26}{space 2} 174.8694{col 37}{space 1}  239.79{col 46}{space 3}0.000{col 54}{space 4} 41589.65{col 67}{space 3} 42275.15
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. regress b1_a wfh i.a5_3 i.a21_2 i.a22 i.year if wfh!=., r
+
+{txt}Linear regression                               Number of obs     = {res}    29,509
+                                                {txt}{help j_robustsingular:F(133, 29372) }    =  {res}        .
+                                                {txt}Prob > F          = {res}         .
+                                                {txt}R-squared         = {res}    0.2000
+                                                {txt}Root MSE          =    {res}  26931
+
+{txt}{hline 56}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 57}{c |}{col 69}    Robust
+{col 1}                                                   b1_a{col 57}{c |}      Coef.{col 69}   Std. Err.{col 81}      t{col 89}   P>|t|{col 97}     [95% Con{col 110}f. Interval]
+{hline 56}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 52}wfh {c |}{col 57}{res}{space 2} 15564.05{col 69}{space 2} 4822.585{col 80}{space 1}    3.23{col 89}{space 3}0.001{col 97}{space 4} 6111.573{col 110}{space 3} 25016.54
+{txt}{space 55} {c |}
+{space 51}a5_3 {c |}
+{space 45}自修(轉7)  {c |}{col 57}{res}{space 2} 1862.181{col 69}{space 2} 3662.396{col 80}{space 1}    0.51{col 89}{space 3}0.611{col 97}{space 4}-5316.279{col 110}{space 3} 9040.641
+{txt}{space 45}國小(轉7)  {c |}{col 57}{res}{space 2} 6046.073{col 69}{space 2}  2614.37{col 80}{space 1}    2.31{col 89}{space 3}0.021{col 97}{space 4} 921.7902{col 110}{space 3} 11170.36
+{txt}{space 41}國(初)中(轉7)  {c |}{col 57}{res}{space 2} 11082.87{col 69}{space 2} 2651.956{col 80}{space 1}    4.18{col 89}{space 3}0.000{col 97}{space 4} 5884.916{col 110}{space 3} 16280.82
+{txt}{space 27}高級中等(高中、高職)(接5-4)  {c |}{col 57}{res}{space 2}  10488.6{col 69}{space 2} 2578.628{col 80}{space 1}    4.07{col 89}{space 3}0.000{col 97}{space 4} 5434.376{col 110}{space 3} 15542.83
+{txt}{space 19}專科(五專前三年劃記高級中等)(接5-4)  {c |}{col 57}{res}{space 2} 12638.68{col 69}{space 2}  2617.58{col 80}{space 1}    4.83{col 89}{space 3}0.000{col 97}{space 4} 7508.111{col 110}{space 3} 17769.26
+{txt}{space 43}大學(接5-4)  {c |}{col 57}{res}{space 2} 10514.16{col 69}{space 2}  2594.67{col 80}{space 1}    4.05{col 89}{space 3}0.000{col 97}{space 4}  5428.49{col 110}{space 3} 15599.83
+{txt}{space 43}碩士(接5-4)  {c |}{col 57}{res}{space 2} 21279.71{col 69}{space 2}  2670.63{col 80}{space 1}    7.97{col 89}{space 3}0.000{col 97}{space 4} 16045.16{col 110}{space 3} 26514.26
+{txt}{space 43}博士(接5-4)  {c |}{col 57}{res}{space 2} 47885.09{col 69}{space 2} 4003.358{col 80}{space 1}   11.96{col 89}{space 3}0.000{col 97}{space 4} 40038.33{col 110}{space 3} 55731.85
+{txt}{space 55} {c |}
+{space 50}a21_2 {c |}
+{space 50}林業  {c |}{col 57}{res}{space 2} 4551.603{col 69}{space 2} 1981.817{col 80}{space 1}    2.30{col 89}{space 3}0.022{col 97}{space 4}  667.154{col 110}{space 3} 8436.053
+{txt}{space 50}漁業  {c |}{col 57}{res}{space 2} 6744.952{col 69}{space 2} 2210.843{col 80}{space 1}    3.05{col 89}{space 3}0.002{col 97}{space 4} 2411.601{col 110}{space 3}  11078.3
+{txt}{space 38}石油及天然氣礦業  {c |}{col 57}{res}{space 2} 26655.93{col 69}{space 2} 9580.902{col 80}{space 1}    2.78{col 89}{space 3}0.005{col 97}{space 4} 7876.934{col 110}{space 3} 45434.93
+{txt}{space 34}砂、石採取及其他礦業  {c |}{col 57}{res}{space 2} 7269.876{col 69}{space 2} 3065.717{col 80}{space 1}    2.37{col 89}{space 3}0.018{col 97}{space 4} 1260.934{col 110}{space 3} 13278.82
+{txt}{space 38}食品及飼品製造業  {c |}{col 57}{res}{space 2} 1722.829{col 69}{space 2} 2010.071{col 80}{space 1}    0.86{col 89}{space 3}0.391{col 97}{space 4}    -2217{col 110}{space 3} 5662.658
+{txt}{space 44}飲料製造業  {c |}{col 57}{res}{space 2} 5949.758{col 69}{space 2}  2622.05{col 80}{space 1}    2.27{col 89}{space 3}0.023{col 97}{space 4} 810.4223{col 110}{space 3} 11089.09
+{txt}{space 44}菸草製造業  {c |}{col 57}{res}{space 2}-9669.477{col 69}{space 2} 2548.982{col 80}{space 1}   -3.79{col 89}{space 3}0.000{col 97}{space 4} -14665.6{col 110}{space 3}-4673.359
+{txt}{space 48}紡織業  {c |}{col 57}{res}{space 2} 1265.185{col 69}{space 2} 1945.824{col 80}{space 1}    0.65{col 89}{space 3}0.516{col 97}{space 4}-2548.717{col 110}{space 3} 5079.087
+{txt}{space 36}成衣及服飾品製造業  {c |}{col 57}{res}{space 2}-1607.471{col 69}{space 2} 2050.705{col 80}{space 1}   -0.78{col 89}{space 3}0.433{col 97}{space 4}-5626.945{col 110}{space 3} 2412.002
+{txt}{space 30}皮革、毛皮及其製品製造業  {c |}{col 57}{res}{space 2}-471.5895{col 69}{space 2} 2226.365{col 80}{space 1}   -0.21{col 89}{space 3}0.832{col 97}{space 4}-4835.364{col 110}{space 3} 3892.185
+{txt}{space 40}木竹製品製造業  {c |}{col 57}{res}{space 2} 2982.834{col 69}{space 2}  2241.12{col 80}{space 1}    1.33{col 89}{space 3}0.183{col 97}{space 4}-1409.862{col 110}{space 3}  7375.53
+{txt}{space 32}紙漿、紙及紙製品製造業  {c |}{col 57}{res}{space 2} 2845.998{col 69}{space 2} 2337.517{col 80}{space 1}    1.22{col 89}{space 3}0.223{col 97}{space 4} -1735.64{col 110}{space 3} 7427.636
+{txt}{space 30}印刷及資料儲存媒體複製業  {c |}{col 57}{res}{space 2} 3375.196{col 69}{space 2}   2649.3{col 80}{space 1}    1.27{col 89}{space 3}0.203{col 97}{space 4} -1817.55{col 110}{space 3} 8567.941
+{txt}{space 36}石油及煤製品製造業  {c |}{col 57}{res}{space 2} 14076.95{col 69}{space 2}   2983.1{col 80}{space 1}    4.72{col 89}{space 3}0.000{col 97}{space 4}  8229.94{col 110}{space 3} 19923.96
+{txt}化學原材料、肥料、氮化合物、塑橡膠原料及人造纖維製造業  {c |}{col 57}{res}{space 2} 7822.354{col 69}{space 2} 2290.662{col 80}{space 1}    3.41{col 89}{space 3}0.001{col 97}{space 4} 3332.554{col 110}{space 3} 12312.15
+{txt}{space 36}其他化學製品製造業  {c |}{col 57}{res}{space 2} 7953.451{col 69}{space 2} 7971.587{col 80}{space 1}    1.00{col 89}{space 3}0.318{col 97}{space 4}-7671.216{col 110}{space 3} 23578.12
+{txt}{space 30}藥品及醫用化學製品製造業  {c |}{col 57}{res}{space 2} 2698.307{col 69}{space 2}  3222.76{col 80}{space 1}    0.84{col 89}{space 3}0.402{col 97}{space 4}-3618.447{col 110}{space 3} 9015.062
+{txt}{space 40}橡膠製品製造業  {c |}{col 57}{res}{space 2}  720.501{col 69}{space 2} 2113.635{col 80}{space 1}    0.34{col 89}{space 3}0.733{col 97}{space 4}-3422.318{col 110}{space 3}  4863.32
+{txt}{space 40}塑膠製品製造業  {c |}{col 57}{res}{space 2} 4248.914{col 69}{space 2}  1950.29{col 80}{space 1}    2.18{col 89}{space 3}0.029{col 97}{space 4} 426.2573{col 110}{space 3}  8071.57
+{txt}{space 34}非金屬礦物製品製造業  {c |}{col 57}{res}{space 2} 9109.376{col 69}{space 2} 4754.358{col 80}{space 1}    1.92{col 89}{space 3}0.055{col 97}{space 4}-209.3784{col 110}{space 3} 18428.13
+{txt}{space 40}基本金屬製造業  {c |}{col 57}{res}{space 2} 6818.728{col 69}{space 2} 2577.162{col 80}{space 1}    2.65{col 89}{space 3}0.008{col 97}{space 4} 1767.375{col 110}{space 3} 11870.08
+{txt}{space 40}金屬製品製造業  {c |}{col 57}{res}{space 2} 1748.256{col 69}{space 2} 1872.631{col 80}{space 1}    0.93{col 89}{space 3}0.351{col 97}{space 4}-1922.185{col 110}{space 3} 5418.697
+{txt}{space 38}電子零組件製造業  {c |}{col 57}{res}{space 2} 6346.951{col 69}{space 2} 1933.829{col 80}{space 1}    3.28{col 89}{space 3}0.001{col 97}{space 4} 2556.559{col 110}{space 3} 10137.34
+{txt}{space 24}電腦、電子產品及光學製品製造業  {c |}{col 57}{res}{space 2} 5884.239{col 69}{space 2} 1929.517{col 80}{space 1}    3.05{col 89}{space 3}0.002{col 97}{space 4} 2102.299{col 110}{space 3} 9666.178
+{txt}{space 34}電力設備及配備製造業  {c |}{col 57}{res}{space 2} 4795.054{col 69}{space 2} 2164.975{col 80}{space 1}    2.21{col 89}{space 3}0.027{col 97}{space 4} 551.6057{col 110}{space 3} 9038.502
+{txt}{space 40}機械設備製造業  {c |}{col 57}{res}{space 2} 1453.587{col 69}{space 2} 1834.193{col 80}{space 1}    0.79{col 89}{space 3}0.428{col 97}{space 4}-2141.514{col 110}{space 3} 5048.687
+{txt}{space 36}汽車及其零件製造業  {c |}{col 57}{res}{space 2} 2323.535{col 69}{space 2} 2214.473{col 80}{space 1}    1.05{col 89}{space 3}0.294{col 97}{space 4}-2016.931{col 110}{space 3} 6664.001
+{txt}{space 28}其他運輸工具及其零件製造業  {c |}{col 57}{res}{space 2} 1567.058{col 69}{space 2} 1994.643{col 80}{space 1}    0.79{col 89}{space 3}0.432{col 97}{space 4}-2342.532{col 110}{space 3} 5476.648
+{txt}{space 44}家具製造業  {c |}{col 57}{res}{space 2} 6720.284{col 69}{space 2} 5722.024{col 80}{space 1}    1.17{col 89}{space 3}0.240{col 97}{space 4} -4495.14{col 110}{space 3} 17935.71
+{txt}{space 44}其他製造業  {c |}{col 57}{res}{space 2} 1914.776{col 69}{space 2} 2085.675{col 80}{space 1}    0.92{col 89}{space 3}0.359{col 97}{space 4} -2173.24{col 110}{space 3} 6002.792
+{txt}{space 28}產業用機械設備維修及安裝業  {c |}{col 57}{res}{space 2} 5953.906{col 69}{space 2} 2546.657{col 80}{space 1}    2.34{col 89}{space 3}0.019{col 97}{space 4} 962.3441{col 110}{space 3} 10945.47
+{txt}{space 38}電力及燃氣供應業  {c |}{col 57}{res}{space 2} 15255.93{col 69}{space 2} 2389.174{col 80}{space 1}    6.39{col 89}{space 3}0.000{col 97}{space 4} 10573.05{col 110}{space 3} 19938.82
+{txt}{space 44}用水供應業  {c |}{col 57}{res}{space 2}    10571{col 69}{space 2} 3378.778{col 80}{space 1}    3.13{col 89}{space 3}0.002{col 97}{space 4} 3948.446{col 110}{space 3} 17193.56
+{txt}{space 38}廢水及污水處理業  {c |}{col 57}{res}{space 2} 194.8455{col 69}{space 2} 3891.028{col 80}{space 1}    0.05{col 89}{space 3}0.960{col 97}{space 4}-7431.743{col 110}{space 3} 7821.434
+{txt}{space 22}廢棄物清除、處理及資源回收處理業  {c |}{col 57}{res}{space 2} 9357.474{col 69}{space 2} 2130.217{col 80}{space 1}    4.39{col 89}{space 3}0.000{col 97}{space 4} 5182.153{col 110}{space 3}  13532.8
+{txt}{space 44}污染整治業  {c |}{col 57}{res}{space 2}-14351.55{col 69}{space 2}  2188.95{col 80}{space 1}   -6.56{col 89}{space 3}0.000{col 97}{space 4}-18641.99{col 110}{space 3}-10061.11
+{txt}{space 44}建築工程業  {c |}{col 57}{res}{space 2} 7098.103{col 69}{space 2} 2409.112{col 80}{space 1}    2.95{col 89}{space 3}0.003{col 97}{space 4} 2376.135{col 110}{space 3} 11820.07
+{txt}{space 44}土木工程業  {c |}{col 57}{res}{space 2} 7334.392{col 69}{space 2} 2103.639{col 80}{space 1}    3.49{col 89}{space 3}0.000{col 97}{space 4} 3211.165{col 110}{space 3} 11457.62
+{txt}{space 44}專門營造業  {c |}{col 57}{res}{space 2} 9948.397{col 69}{space 2} 2590.148{col 80}{space 1}    3.84{col 89}{space 3}0.000{col 97}{space 4}  4871.59{col 110}{space 3}  15025.2
+{txt}{space 48}批發業  {c |}{col 57}{res}{space 2} 3724.803{col 69}{space 2} 1959.489{col 80}{space 1}    1.90{col 89}{space 3}0.057{col 97}{space 4}-115.8831{col 110}{space 3} 7565.489
+{txt}{space 48}批發業  {c |}{col 57}{res}{space 2} 5307.795{col 69}{space 2} 2123.609{col 80}{space 1}    2.50{col 89}{space 3}0.012{col 97}{space 4} 1145.426{col 110}{space 3} 9470.164
+{txt}{space 48}零售業  {c |}{col 57}{res}{space 2} 1325.971{col 69}{space 2} 1967.581{col 80}{space 1}    0.67{col 89}{space 3}0.500{col 97}{space 4}-2530.576{col 110}{space 3} 5182.517
+{txt}{space 48}零售業  {c |}{col 57}{res}{space 2} 1055.423{col 69}{space 2}  1965.78{col 80}{space 1}    0.54{col 89}{space 3}0.591{col 97}{space 4}-2797.592{col 110}{space 3} 4908.439
+{txt}{space 44}陸上運輸業  {c |}{col 57}{res}{space 2} 6300.866{col 69}{space 2} 1813.139{col 80}{space 1}    3.48{col 89}{space 3}0.001{col 97}{space 4} 2747.031{col 110}{space 3}   9854.7
+{txt}{space 44}水上運輸業  {c |}{col 57}{res}{space 2} 8276.605{col 69}{space 2} 3310.019{col 80}{space 1}    2.50{col 89}{space 3}0.012{col 97}{space 4} 1788.818{col 110}{space 3} 14764.39
+{txt}{space 44}航空運輸業  {c |}{col 57}{res}{space 2} 14227.06{col 69}{space 2} 2991.156{col 80}{space 1}    4.76{col 89}{space 3}0.000{col 97}{space 4} 8364.262{col 110}{space 3} 20089.86
+{txt}{space 44}運輸輔助業  {c |}{col 57}{res}{space 2} 6273.923{col 69}{space 2} 2845.561{col 80}{space 1}    2.20{col 89}{space 3}0.027{col 97}{space 4} 696.4963{col 110}{space 3} 11851.35
+{txt}{space 48}倉儲業  {c |}{col 57}{res}{space 2} 6572.887{col 69}{space 2} 3414.851{col 80}{space 1}    1.92{col 89}{space 3}0.054{col 97}{space 4}-120.3744{col 110}{space 3} 13266.15
+{txt}{space 42}郵政及快遞業  {c |}{col 57}{res}{space 2} 6347.639{col 69}{space 2} 2003.908{col 80}{space 1}    3.17{col 89}{space 3}0.002{col 97}{space 4} 2419.889{col 110}{space 3} 10275.39
+{txt}{space 48}住宿業  {c |}{col 57}{res}{space 2}-1617.547{col 69}{space 2} 2250.131{col 80}{space 1}   -0.72{col 89}{space 3}0.472{col 97}{space 4}-6027.904{col 110}{space 3} 2792.809
+{txt}{space 48}餐飲業  {c |}{col 57}{res}{space 2}-833.0089{col 69}{space 2} 1855.508{col 80}{space 1}   -0.45{col 89}{space 3}0.653{col 97}{space 4}-4469.888{col 110}{space 3} 2803.871
+{txt}{space 48}出版業  {c |}{col 57}{res}{space 2}-321.4988{col 69}{space 2} 2887.855{col 80}{space 1}   -0.11{col 89}{space 3}0.911{col 97}{space 4}-5981.824{col 110}{space 3} 5338.826
+{txt}{space 16}影片及電視節目業；聲音錄製及音樂發行業  {c |}{col 57}{res}{space 2}-967.2815{col 69}{space 2} 4091.113{col 80}{space 1}   -0.24{col 89}{space 3}0.813{col 97}{space 4}-8986.046{col 110}{space 3} 7051.483
+{txt}{space 28}廣播、電視節目編排及傳播業  {c |}{col 57}{res}{space 2} 3387.735{col 69}{space 2} 2884.827{col 80}{space 1}    1.17{col 89}{space 3}0.240{col 97}{space 4}-2266.655{col 110}{space 3} 9042.125
+{txt}{space 48}電信業  {c |}{col 57}{res}{space 2}  10534.7{col 69}{space 2} 2507.516{col 80}{space 1}    4.20{col 89}{space 3}0.000{col 97}{space 4} 5619.856{col 110}{space 3} 15449.54
+{txt}{space 24}電腦程式設計、諮詢及相關服務業  {c |}{col 57}{res}{space 2} 1746.909{col 69}{space 2} 2107.371{col 80}{space 1}    0.83{col 89}{space 3}0.407{col 97}{space 4}-2383.632{col 110}{space 3} 5877.451
+{txt}{space 44}資訊服務業  {c |}{col 57}{res}{space 2} 2263.416{col 69}{space 2}  2843.41{col 80}{space 1}    0.80{col 89}{space 3}0.426{col 97}{space 4}-3309.795{col 110}{space 3} 7836.627
+{txt}{space 44}金融服務業  {c |}{col 57}{res}{space 2} 12846.61{col 69}{space 2} 2053.284{col 80}{space 1}    6.26{col 89}{space 3}0.000{col 97}{space 4} 8822.082{col 110}{space 3} 16871.14
+{txt}{space 48}保險業  {c |}{col 57}{res}{space 2} 1814.096{col 69}{space 2} 2012.086{col 80}{space 1}    0.90{col 89}{space 3}0.367{col 97}{space 4}-2129.683{col 110}{space 3} 5757.874
+{txt}{space 34}證券期貨及金融輔助業  {c |}{col 57}{res}{space 2} 5269.457{col 69}{space 2} 2707.123{col 80}{space 1}    1.95{col 89}{space 3}0.052{col 97}{space 4}-36.62424{col 110}{space 3} 10575.54
+{txt}{space 42}不動產開發業  {c |}{col 57}{res}{space 2} 1465.658{col 69}{space 2}  3888.22{col 80}{space 1}    0.38{col 89}{space 3}0.706{col 97}{space 4}-6155.428{col 110}{space 3} 9086.744
+{txt}{space 32}不動產經營及相關服務業  {c |}{col 57}{res}{space 2}-3851.903{col 69}{space 2} 2044.125{col 80}{space 1}   -1.88{col 89}{space 3}0.060{col 97}{space 4} -7858.48{col 110}{space 3} 154.6735
+{txt}{space 38}法律及會計服務業  {c |}{col 57}{res}{space 2} 9552.562{col 69}{space 2} 2942.358{col 80}{space 1}    3.25{col 89}{space 3}0.001{col 97}{space 4} 3785.409{col 110}{space 3} 15319.71
+{txt}{space 28}企業總管理機構及管理顧問業  {c |}{col 57}{res}{space 2}  3525.66{col 69}{space 2} 2476.243{col 80}{space 1}    1.42{col 89}{space 3}0.155{col 97}{space 4}-1327.887{col 110}{space 3} 8379.207
+{txt}{space 18}建築、工程服務及技術檢測、分析服務業  {c |}{col 57}{res}{space 2} 8026.958{col 69}{space 2} 2320.026{col 80}{space 1}    3.46{col 89}{space 3}0.001{col 97}{space 4} 3479.602{col 110}{space 3} 12574.31
+{txt}{space 40}研究發展服務業  {c |}{col 57}{res}{space 2} 1243.556{col 69}{space 2} 2779.921{col 80}{space 1}    0.45{col 89}{space 3}0.655{col 97}{space 4}-4205.214{col 110}{space 3} 6692.325
+{txt}{space 36}廣告業及市場研究業  {c |}{col 57}{res}{space 2} 18717.38{col 69}{space 2} 12725.27{col 80}{space 1}    1.47{col 89}{space 3}0.141{col 97}{space 4}-6224.719{col 110}{space 3} 43659.47
+{txt}{space 44}專門設計業  {c |}{col 57}{res}{space 2}-2528.753{col 69}{space 2}  2344.85{col 80}{space 1}   -1.08{col 89}{space 3}0.281{col 97}{space 4}-7124.764{col 110}{space 3} 2067.259
+{txt}{space 48}獸醫業  {c |}{col 57}{res}{space 2} 9386.717{col 69}{space 2} 8130.889{col 80}{space 1}    1.15{col 89}{space 3}0.248{col 97}{space 4}-6550.189{col 110}{space 3} 25323.62
+{txt}{space 28}其他專業、科學及技術服務業  {c |}{col 57}{res}{space 2} -7509.26{col 69}{space 2} 3021.322{col 80}{space 1}   -2.49{col 89}{space 3}0.013{col 97}{space 4}-13431.19{col 110}{space 3}-1587.334
+{txt}{space 48}租賃業  {c |}{col 57}{res}{space 2} 921.0534{col 69}{space 2} 3435.195{col 80}{space 1}    0.27{col 89}{space 3}0.789{col 97}{space 4}-5812.082{col 110}{space 3} 7654.189
+{txt}{space 38}人力仲介及供應業  {c |}{col 57}{res}{space 2} 3896.058{col 69}{space 2} 5903.682{col 80}{space 1}    0.66{col 89}{space 3}0.509{col 97}{space 4}-7675.422{col 110}{space 3} 15467.54
+{txt}{space 38}旅行及相關服務業  {c |}{col 57}{res}{space 2}-3657.647{col 69}{space 2} 2507.511{col 80}{space 1}   -1.46{col 89}{space 3}0.145{col 97}{space 4}-8572.482{col 110}{space 3} 1257.188
+{txt}{space 42}保全及偵探業  {c |}{col 57}{res}{space 2}-14616.67{col 69}{space 2} 2091.047{col 80}{space 1}   -6.99{col 89}{space 3}0.000{col 97}{space 4}-18715.22{col 110}{space 3}-10518.13
+{txt}{space 36}建築物及綠化服務業  {c |}{col 57}{res}{space 2} 954.4625{col 69}{space 2} 1790.216{col 80}{space 1}    0.53{col 89}{space 3}0.594{col 97}{space 4} -2554.44{col 110}{space 3} 4463.366
+{txt}{space 40}行政支援服務業  {c |}{col 57}{res}{space 2}  2841.33{col 69}{space 2} 3806.028{col 80}{space 1}    0.75{col 89}{space 3}0.455{col 97}{space 4}-4618.655{col 110}{space 3} 10301.31
+{txt}{space 24}公共行政及國防；強制性社會安全  {c |}{col 57}{res}{space 2} 5446.203{col 69}{space 2} 1896.683{col 80}{space 1}    2.87{col 89}{space 3}0.004{col 97}{space 4}  1728.62{col 110}{space 3} 9163.786
+{txt}{space 36}國際組織及外國機構  {c |}{col 57}{res}{space 2}-35420.73{col 69}{space 2} 3509.794{col 80}{space 1}  -10.09{col 89}{space 3}0.000{col 97}{space 4}-42300.08{col 110}{space 3}-28541.37
+{txt}{space 48}教育業  {c |}{col 57}{res}{space 2}-1808.099{col 69}{space 2} 1849.822{col 80}{space 1}   -0.98{col 89}{space 3}0.328{col 97}{space 4}-5433.833{col 110}{space 3} 1817.636
+{txt}{space 44}醫療保健業  {c |}{col 57}{res}{space 2} 4378.464{col 69}{space 2} 1996.865{col 80}{space 1}    2.19{col 89}{space 3}0.028{col 97}{space 4} 464.5191{col 110}{space 3} 8292.409
+{txt}{space 38}居住型照顧服務業  {c |}{col 57}{res}{space 2}-2303.006{col 69}{space 2}  2218.29{col 80}{space 1}   -1.04{col 89}{space 3}0.299{col 97}{space 4}-6650.953{col 110}{space 3} 2044.941
+{txt}{space 36}其他社會工作服務業  {c |}{col 57}{res}{space 2}-3720.756{col 69}{space 2} 1974.394{col 80}{space 1}   -1.88{col 89}{space 3}0.060{col 97}{space 4}-7590.656{col 110}{space 3} 149.1444
+{txt}{space 38}創作及藝術表演業  {c |}{col 57}{res}{space 2}-13773.06{col 69}{space 2} 4245.078{col 80}{space 1}   -3.24{col 89}{space 3}0.001{col 97}{space 4} -22093.6{col 110}{space 3}-5452.517
+{txt}{space 20}圖書館、檔案保存、博物館及類似機構  {c |}{col 57}{res}{space 2}-4837.774{col 69}{space 2} 2511.272{col 80}{space 1}   -1.93{col 89}{space 3}0.054{col 97}{space 4}-9759.981{col 110}{space 3}  84.4318
+{txt}{space 48}博奕業  {c |}{col 57}{res}{space 2} 150.5033{col 69}{space 2} 4153.411{col 80}{space 1}    0.04{col 89}{space 3}0.971{col 97}{space 4}-7990.368{col 110}{space 3} 8291.374
+{txt}{space 32}運動、娛樂及休閒服務業  {c |}{col 57}{res}{space 2}-375.7231{col 69}{space 2} 1988.347{col 80}{space 1}   -0.19{col 89}{space 3}0.850{col 97}{space 4}-4272.972{col 110}{space 3} 3521.526
+{txt}{space 34}宗教、職業及類似組織  {c |}{col 57}{res}{space 2}-6018.659{col 69}{space 2} 2029.404{col 80}{space 1}   -2.97{col 89}{space 3}0.003{col 97}{space 4}-9996.383{col 110}{space 3}-2040.936
+{txt}{space 34}個人及家庭用品維修業  {c |}{col 57}{res}{space 2} 5787.098{col 69}{space 2} 1965.043{col 80}{space 1}    2.95{col 89}{space 3}0.003{col 97}{space 4} 1935.526{col 110}{space 3}  9638.67
+{txt}{space 38}未分類其他服務業  {c |}{col 57}{res}{space 2}-565.5866{col 69}{space 2} 2005.688{col 80}{space 1}   -0.28{col 89}{space 3}0.778{col 97}{space 4}-4496.824{col 110}{space 3} 3365.651
+{txt}{space 55} {c |}
+{space 52}a22 {c |}
+{space 36}行政及商業經理人員  {c |}{col 57}{res}{space 2}-24820.83{col 69}{space 2}  8526.46{col 80}{space 1}   -2.91{col 89}{space 3}0.004{col 97}{space 4}-41533.08{col 110}{space 3}-8108.587
+{txt}{space 32}生產及專業服務經理人員  {c |}{col 57}{res}{space 2}-14629.89{col 69}{space 2} 8663.209{col 80}{space 1}   -1.69{col 89}{space 3}0.091{col 97}{space 4}-31610.17{col 110}{space 3} 2350.383
+{txt}{space 22}餐旅、零售及其他場所服務經理人員  {c |}{col 57}{res}{space 2}-26740.78{col 69}{space 2} 8652.207{col 80}{space 1}   -3.09{col 89}{space 3}0.002{col 97}{space 4}-43699.49{col 110}{space 3}-9782.064
+{txt}{space 36}科學及工程專業人員  {c |}{col 57}{res}{space 2}-42166.49{col 69}{space 2} 7815.415{col 80}{space 1}   -5.40{col 89}{space 3}0.000{col 97}{space 4}-57485.06{col 110}{space 3}-26847.93
+{txt}{space 38}醫療保健專業人員  {c |}{col 57}{res}{space 2}-24228.67{col 69}{space 2} 7850.899{col 80}{space 1}   -3.09{col 89}{space 3}0.002{col 97}{space 4}-39616.78{col 110}{space 3}-8840.558
+{txt}{space 42}教學專業人員  {c |}{col 57}{res}{space 2}-40164.62{col 69}{space 2}  7556.39{col 80}{space 1}   -5.32{col 89}{space 3}0.000{col 97}{space 4}-54975.48{col 110}{space 3}-25353.75
+{txt}{space 36}商業及行政專業人員  {c |}{col 57}{res}{space 2}-42574.39{col 69}{space 2} 7785.539{col 80}{space 1}   -5.47{col 89}{space 3}0.000{col 97}{space 4}-57834.39{col 110}{space 3}-27314.38
+{txt}{space 36}資訊及通訊專業人員  {c |}{col 57}{res}{space 2}-39014.94{col 69}{space 2}  7705.25{col 80}{space 1}   -5.06{col 89}{space 3}0.000{col 97}{space 4}-54117.57{col 110}{space 3} -23912.3
+{txt}{space 30}法律、社會及文化專業人員  {c |}{col 57}{res}{space 2}-36501.69{col 69}{space 2} 8125.747{col 80}{space 1}   -4.49{col 89}{space 3}0.000{col 97}{space 4}-52428.52{col 110}{space 3}-20574.86
+{txt}{space 32}科學及工程助理專業人員  {c |}{col 57}{res}{space 2}-48855.37{col 69}{space 2} 7764.017{col 80}{space 1}   -6.29{col 89}{space 3}0.000{col 97}{space 4}-64073.19{col 110}{space 3}-33637.55
+{txt}{space 34}醫療保健助理專業人員  {c |}{col 57}{res}{space 2}-52737.21{col 69}{space 2} 7641.736{col 80}{space 1}   -6.90{col 89}{space 3}0.000{col 97}{space 4}-67715.36{col 110}{space 3}-37759.07
+{txt}{space 32}商業及行政助理專業人員  {c |}{col 57}{res}{space 2}-44473.42{col 69}{space 2} 7576.423{col 80}{space 1}   -5.87{col 89}{space 3}0.000{col 97}{space 4}-59323.55{col 110}{space 3}-29623.29
+{txt}{space 20}法律、社會、文化及有關助理專業人員  {c |}{col 57}{res}{space 2}-49599.15{col 69}{space 2} 7552.306{col 80}{space 1}   -6.57{col 89}{space 3}0.000{col 97}{space 4}   -64402{col 110}{space 3}-34796.29
+{txt}{space 34}資訊及通訊傳播技術員  {c |}{col 57}{res}{space 2}-49457.62{col 69}{space 2} 7687.166{col 80}{space 1}   -6.43{col 89}{space 3}0.000{col 97}{space 4}-64524.81{col 110}{space 3}-34390.43
+{txt}{space 36}一般及文書事務人員  {c |}{col 57}{res}{space 2}-57860.92{col 69}{space 2} 7509.505{col 80}{space 1}   -7.71{col 89}{space 3}0.000{col 97}{space 4}-72579.89{col 110}{space 3}-43141.96
+{txt}{space 38}顧客服務事務人員  {c |}{col 57}{res}{space 2}-57986.68{col 69}{space 2} 7589.836{col 80}{space 1}   -7.64{col 89}{space 3}0.000{col 97}{space 4}-72863.09{col 110}{space 3}-43110.26
+{txt}{space 24}會計、生產、運輸及有關事務人員  {c |}{col 57}{res}{space 2}-57228.83{col 69}{space 2} 7626.125{col 80}{space 1}   -7.50{col 89}{space 3}0.000{col 97}{space 4}-72176.37{col 110}{space 3}-42281.28
+{txt}{space 38}其他事務支援人員  {c |}{col 57}{res}{space 2}-52988.86{col 69}{space 2} 7609.376{col 80}{space 1}   -6.96{col 89}{space 3}0.000{col 97}{space 4}-67903.58{col 110}{space 3}-38074.14
+{txt}{space 38}個人服務工作人員  {c |}{col 57}{res}{space 2}-53110.85{col 69}{space 2} 7507.519{col 80}{space 1}   -7.07{col 89}{space 3}0.000{col 97}{space 4}-67825.92{col 110}{space 3}-38395.78
+{txt}{space 36}銷售及展示工作人員  {c |}{col 57}{res}{space 2} -52605.2{col 69}{space 2} 7598.507{col 80}{space 1}   -6.92{col 89}{space 3}0.000{col 97}{space 4}-67498.62{col 110}{space 3}-37711.79
+{txt}{space 38}個人照顧工作人員  {c |}{col 57}{res}{space 2}-56667.61{col 69}{space 2}  7499.89{col 80}{space 1}   -7.56{col 89}{space 3}0.000{col 97}{space 4}-71367.73{col 110}{space 3}-41967.49
+{txt}{space 38}保安服務工作人員  {c |}{col 57}{res}{space 2}-39692.22{col 69}{space 2} 7264.489{col 80}{space 1}   -5.46{col 89}{space 3}0.000{col 97}{space 4}-53930.95{col 110}{space 3} -25453.5
+{txt}{space 30}農、林、漁、牧業生產人員  {c |}{col 57}{res}{space 2}-58888.22{col 69}{space 2} 7666.584{col 80}{space 1}   -7.68{col 89}{space 3}0.000{col 97}{space 4}-73915.06{col 110}{space 3}-43861.37
+{txt}{space 36}營建及有關工作人員  {c |}{col 57}{res}{space 2}-54698.51{col 69}{space 2} 7730.915{col 80}{space 1}   -7.08{col 89}{space 3}0.000{col 97}{space 4}-69851.45{col 110}{space 3}-39545.57
+{txt}{space 26}金屬、機具製造及有關工作人員  {c |}{col 57}{res}{space 2}-51797.59{col 69}{space 2} 7599.458{col 80}{space 1}   -6.82{col 89}{space 3}0.000{col 97}{space 4}-66692.87{col 110}{space 3}-36902.31
+{txt}{space 34}手工藝及印刷工作人員  {c |}{col 57}{res}{space 2}-53493.24{col 69}{space 2} 7797.391{col 80}{space 1}   -6.86{col 89}{space 3}0.000{col 97}{space 4}-68776.48{col 110}{space 3}-38210.01
+{txt}{space 32}電力及電子設備裝修人員  {c |}{col 57}{res}{space 2}-55675.13{col 69}{space 2} 7713.775{col 80}{space 1}   -7.22{col 89}{space 3}0.000{col 97}{space 4}-70794.47{col 110}{space 3}-40555.78
+{txt}{space 34}其他技藝有關工作人員  {c |}{col 57}{res}{space 2}-56657.79{col 69}{space 2} 7694.789{col 80}{space 1}   -7.36{col 89}{space 3}0.000{col 97}{space 4}-71739.92{col 110}{space 3}-41575.66
+{txt}{space 34}生產機械設備操作人員  {c |}{col 57}{res}{space 2}-57062.51{col 69}{space 2} 7758.233{col 80}{space 1}   -7.36{col 89}{space 3}0.000{col 97}{space 4}   -72269{col 110}{space 3}-41856.03
+{txt}{space 46}組裝人員  {c |}{col 57}{res}{space 2}-58328.59{col 69}{space 2} 7721.427{col 80}{space 1}   -7.55{col 89}{space 3}0.000{col 97}{space 4}-73462.93{col 110}{space 3}-43194.25
+{txt}{space 32}駕駛及移運設備操作人員  {c |}{col 57}{res}{space 2}-54302.55{col 69}{space 2} 7547.306{col 80}{space 1}   -7.19{col 89}{space 3}0.000{col 97}{space 4}-69095.61{col 110}{space 3} -39509.5
+{txt}{space 42}清潔工及幫工  {c |}{col 57}{res}{space 2} -60703.4{col 69}{space 2}  7478.73{col 80}{space 1}   -8.12{col 89}{space 3}0.000{col 97}{space 4}-75362.04{col 110}{space 3}-46044.75
+{txt}{space 32}農、林、漁、牧業勞力工  {c |}{col 57}{res}{space 2}-60691.81{col 69}{space 2} 7651.531{col 80}{space 1}   -7.93{col 89}{space 3}0.000{col 97}{space 4}-75689.15{col 110}{space 3}-45694.46
+{txt}{space 26}採礦、營建、製造及運輸勞力工  {c |}{col 57}{res}{space 2}-63196.58{col 69}{space 2} 7632.776{col 80}{space 1}   -8.28{col 89}{space 3}0.000{col 97}{space 4}-78157.16{col 110}{space 3}   -48236
+{txt}{space 32}街頭服務工及非餐飲小販  {c |}{col 57}{res}{space 2}-55668.79{col 69}{space 2} 9445.232{col 80}{space 1}   -5.89{col 89}{space 3}0.000{col 97}{space 4}-74181.87{col 110}{space 3}-37155.71
+{txt}{space 30}廢棄物服務工及環境清掃工  {c |}{col 57}{res}{space 2}-63769.59{col 69}{space 2} 7662.438{col 80}{space 1}   -8.32{col 89}{space 3}0.000{col 97}{space 4}-78788.31{col 110}{space 3}-48750.87
+{txt}{space 32}其他基層技術工及勞力工  {c |}{col 57}{res}{space 2}-60246.99{col 69}{space 2}   7444.5{col 80}{space 1}   -8.09{col 89}{space 3}0.000{col 97}{space 4}-74838.54{col 110}{space 3}-45655.44
+{txt}{space 55} {c |}
+{space 51}year {c |}
+{space 50}2021  {c |}{col 57}{res}{space 2} 3055.102{col 69}{space 2} 516.7083{col 80}{space 1}    5.91{col 89}{space 3}0.000{col 97}{space 4} 2042.331{col 110}{space 3} 4067.874
+{txt}{space 55} {c |}
+{space 50}_cons {c |}{col 57}{res}{space 2} 75809.05{col 69}{space 2} 8090.771{col 80}{space 1}    9.37{col 89}{space 3}0.000{col 97}{space 4} 59950.78{col 110}{space 3} 91667.33
+{txt}{hline 56}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+{txt}end of do-file
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/bychen/Documents/LaborEcon/term/hw1_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 7 Apr 2023, 15:33:42
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

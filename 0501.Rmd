@@ -1,0 +1,64 @@
+---
+title: "Presentation 0501"
+author: "Boyu, Chen R11323006"
+date: "2023-05-01"
+output:
+  beamer_presentation: default
+  slidy_presentation: default
+---
+
+## Research Topic
+
+1.  During the pandemic, is the **well-being index** of home workers lower?
+2.  Whether the **time allocation** of home workers differed significantly from that of the control group.
+
+## Data & variable
+
+### Data
+
+IPUMS Time Use data 2020 & 2021
+
+### Well-being index variable
+
+0 for the worst life, 10 for the best life
+
+### Time variables
+
+`exercise time`, `social time`, `sleep time`, `commute time`, `work time`, `self-care time`. (unit: minutes per day)
+
+### Treatment
+
+`Distance working or not`
+
+### Control variables
+
+`Occupation`, `industry`, `family size`, `race`, `sex`, ... etc.
+
+## Empirical strategy
+
+### variables:
+
+-   Outcome var. ($Y$): `well-being` & `Time use`
+-   Treatment ($D$): `Distance working or not`
+-   Control var. ($X$): `occupation`, `industry`, `family size`, `race`, `sex`, ... etc.
+
+### pdslasso
+
+The `occupation` and `industry` are categorical data, when we put these two variable into the regression, it will be a lot of dummies, so we use LASSO here to kick off those unimportant control variables.
+
+### psmatch
+
+After controlling **all** the workers' characteristics, how working form home affect well-being/Time allocation.
+
+
+## Further Analysis
+
+### Subgroup Analysis
+Put interaction term into model, such as `age`$\times$`WFH`, `sex`$\times$`WFH`.
+
+### Mediation Analysis
+$$D|X \overset{\alpha}{\rightarrow} TimeUse \overset{\beta}{\rightarrow} WellBeing $$
+$$
+D|X \overset{\gamma}{\rightarrow} WellBeing
+$$
+To check whether if $\alpha$ and $\beta$ are significant.
