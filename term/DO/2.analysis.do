@@ -5,38 +5,52 @@ cd "/Users/bychen/Documents/LaborEcon/term"
 
 use work/timeuse.dta, clear
 
-// Set X, D
-global X i.statefip age female hh_numkids i.ind2  earnweek uhrsworkt famincome hh_size i.clwkr i.race
-
-global X1 i.statefip age female hh_numkids i.ind2 i.occ2 i.fullpart earnweek uhrsworkt famincome hh_size hh_child i.clwkr i.race 
-
-global X2 i.statefip age female hh_numkids i.ind2 i.occ2 i.fullpart earnweek uhrsworkt famincome hh_size hh_child i.clwkr i.race bls_leis_soccom bls_leis_sport bls_pcare_health bls_pcare_sleep bls_work_working painmed rested
-
+// Set X, D, Y
+global X i.statefip age female hh_child hh_size i.famincome i.occ2 earnweek i.race fullpart
 global D distance_work
-pdslasso wbladder $D ($X2), rob
-qddml wbladder $D ($X2), kfolds(2) model(partial) cmd(rlasso) reps(5)
-xpopoisson wbladder $D, controls($X2)
-psmatch2 $D $X2, out(wbladder) logit n(2)
-reg wbladder $D $X2, r
-set seed 42
+global Y wbladder
 
-// pdslasso
-foreach Y in painmed wbladder bls_leis_sport bls_leis_soccom rested bls_pcare_sleep bls_pcare_health bls_work_working bls_work_travel{
-	pdslasso `Y' $D ($X1), rob
-}
 
-// DDML
-foreach Y in painmed wbladder bls_leis_sport bls_leis_soccom rested bls_pcare_sleep bls_pcare_health bls_work_working{
-	qddml `Y' $D ($X), kfolds(2) model(partial) cmd(rlasso) reps(5)
+// Step 1: pre-test
+ttest $Y, by($D)
+
+// Step 2: Test Differences in Covariates in Pre-matching Data
+foreach cov in age female hh_child hh_size earnweek fullpart{
+	ttest `cov', by ($D)
 }
 
 
-// matching
-foreach Y in painmed wbladder bls_leis_sport bls_leis_soccom rested bls_pcare_sleep bls_pcare_health bls_work_working{
-	psmatch2 $D $X, out(`Y') logit n(2)
-}
+// Step 3: PSM Estimation – psmatch2 (Main result)
+psmatch2 $D $X, out($Y) logit n(3) ai(3) ate
+gen pscore = _pscore
 
-// xpopoisson 
-foreach Y in painmed wbladder bls_leis_sport bls_leis_soccom rested bls_pcare_sleep  bls_work_working{
-	xpopoisson `Y' $D, controls($X)
-}
+
+// Step 4: Post Matching Analysis – psmatch2
+pstest _pscore, density both
+pstest age female hh_child hh_size earnweek fullpart, both
+
+
+// pscore hist
+twoway (hist _pscore if distance_work == 1, frac lcolor(gs12) fcolor(gs12)) ///
+(hist _pscore if distance_work == 0, frac fcolor(none) lcolor(red)), ///
+legend(order(1 "Remote worker" 2 "commuter" )) 
+
+
+// sub-group
+psmatch2 $D $X if female ==1, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==0, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if hh_child ==1, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if hh_child ==0, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==1 & hh_child ==1, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==0 & hh_child ==1, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==1 & hh_child ==0, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==0 & hh_child ==0, out($Y) logit n(3) ai(3)
+
+
+// Robustness checks
+psmatch2 $D $X, out($Y) logit n(1) ai(1)
+psmatch2 $D $X, out($Y) logit n(2) ai(2)
+psmatch2 $D $X, out($Y) logit n(4) ai(4)
+psmatch2 $D $X, out($Y) logit n(5) ai(5)
+
+psmatch2 $D $X if pscore >= 0.2 & pscore<=0.4, out($Y) logit n(3) ai(3)

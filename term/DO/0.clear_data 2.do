@@ -23,15 +23,21 @@ replace `x' = . if spousepres == 3
 }
 */
 drop sp*  
-//drop spouse related variables(a lot missing, maybe 之後再加入)
+//drop spouse related variables(a lot missing, maybe add them later)
 
-order year caseid statefip age sex race marst hh_numkids covidtelew bls_pcare_sleep painmed wbladder bls_leis_sport bls_leis_soc empstat  occ ind earnweek uhrsworkt
-sort caseid 
-format caseid %18.0g
-
+drop if year == 2020  
 gen female = sex == 2 
 gen distance_work = 1 if covid == 2
 replace distance_work = 0 if covid == 1
+replace fullpart = 0 if fullpart == 2
+drop covidtelew
+drop sex
+drop bls*
+
+order caseid wbladder statefip distance_work age female race marst hh_child hh_size  empstat  occ ind earnweek uhrsworkt
+sort caseid 
+format caseid %18.0g
+
 
 compress
 

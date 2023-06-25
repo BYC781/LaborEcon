@@ -1,0 +1,124 @@
+---
+title: "LaborEcon PS2"
+author: "Boyu Chen"
+date: "2023-05-25"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(haven)
+library(modelsummary)
+library(tidyverse)
+library(MatchIt)
+library(fastDummies)
+library(sjmisc)
+library(glmnet)
+library(hdm)
+```
+
+# 1 Research Question and Read Data
+## 1. Write a paragraph to introduce the research question in your term paper
+The topic of my research is to examine whether distance workers have lower well-being than commuters, and whether there are significant differences in time allocation between distance workers and commuters.
+
+## 2. read data
+```{r read data}
+timeuse <- read_dta("/Users/bychen/Documents/LaborEcon/term/work/tu.dta")
+```
+# 2 Examine Data
+## 1. Use summary() to display summary statistics for your dataset
+```{r summary}
+summary(timeuse)
+```
+# 3 Create Sample for Analysis
+## 1. Briefly discuss how you construct estimation sample in your term paper
+
+I selected the IPUMS Time use data in 2020 and 2021 because, in these two years, the subjects were asked: "Whether you work remotely because of COVID-19?" and "How satisfied are you with your current life?" For this reason, I excluded those observations that did not answer these two question, as well as excluded those observations with no job and no income.
+
+## 2. Use mutate() to generate a variable for your empirical analysis
+
+Create interation terms for subgroup analysis.
+```{r mutate}
+timeuse_sup <- timeuse %>% 
+    mutate(
+        D.female = distance_work * female, 
+        D.hh_numkids = distance_work * hh_numkids,
+        D.age = distance_work * age)
+```
+
+## 3. Use summarise() to create a new dataset for your empirical analysis
+
+I created a new dataset called `wb_grpby_marst` here, which is the average well-being index for different marital statuses, and we can see that for those who never married, their well-being index is lower than other groups.
+```{r summarise}
+wb_grpby_marst <- timeuse %>% 
+    group_by(marst) %>% 
+    summarize(wb.average.grpby.marst = mean(wbladder,na.rm = T))
+wb_grpby_marst
+```
+
+## 4. Use full_join(), inner_join(), right_join() or left_join() to merge the dataset you have created for question 3-2 (previous question)
+```{r join}
+combine.data <- full_join(timeuse, wb_grpby_marst)
+```
+
+# 4 Visualize Data
+## 1.  Use any command that in R’s graphical packages, such as ggplot2 or others, to create a graph that can represent one of the findings in your term paper
+```{r ggplot}
+ggplot(timeuse, aes(x = factor(distance_work), y = bls_work_travel)) +
+    geom_violin(fill = "skyblue", color = "black", alpha = 0.8) +
+    labs(x = "Distance work", y = "bls_work_travel") +
+    ggtitle("Violin Plot of Work Travel Time by Distance Work") +
+    theme_minimal()
+```
+
+## 2. Please explain the main findings of this graph
+
+From the violin plot we can see the density of distance workers and commuters. We can see that distance workers are more likely to spend less time on work-related travel compared to commuters. Nevertheless, it is important to note that there are several outliers within both groups. This is because the variable `bls_work_travel` contains not only commuting time but also the time spent on business trips.
+
+# 5 Empirical Analysis
+
+## 1. Write a paragraph to explain the empirical specification you want to implement in your term paper.
+
+We use **propensity score matching** to control the attributes of the experimental group (Distance workers) and the control group (Commuters), including age, sex, industry, occupation, marital status, how many children, etc., and then see if there is a significant difference in well-being between the treatment group and the control group.
+
+## 2. Use any command in R’s statistical/econometrics packages, such as lm or others, to analyze causal relationship in your term paper
+
+### For Y = well-being, method: pscore
+```{r before analysis without interation terms}
+y <- timeuse %>% select(starts_with("bls_"), wbladder)
+x <- timeuse %>% select(-starts_with("bls_"), -wbladder)
+cata <- c("statefip","race", "marst", "empstat", "occ2", "ind2", "famincome", 
+          "citizen", "clwkr", "fullpart")
+catagorical.data <- x %>% select(all_of(cata)) %>% to_label()
+numeric.data <- x %>% select(-all_of(cata))
+covariate <- bind_cols(catagorical.data, numeric.data)
+covariate <- covariate %>% 
+    relocate(c(distance_work, female), 
+             .before = statefip)
+```
+```{r pscore}
+idx <- 18 # wbladder
+regdata <- bind_cols(y[idx], covariate) %>% drop_na()
+fmla1 <- as.formula(paste("distance_work", ".", sep=" ~ "))
+fmla2 <- as.formula(paste(colnames(y[idx]), "distance_work", sep=" ~ "))
+m.out1 <- matchit(fmla1, data = regdata, method = "nearest", distance = "logit",
+                  replace=FALSE)
+m.data1 <- match.data(m.out1,distance ="pscore") 
+print(summary(lm(fmla2, data = m.data1)))
+```
+
+### For Y = well-being, method: Double Selection
+```{r double selection}
+catdummy = dummy_cols(catagorical.data) %>% select(-(statefip:fullpart))
+idx <- 18
+
+dat = bind_cols(y[, idx] ,numeric.data, catdummy) %>% drop_na()
+YY = dat[,1]
+DD = dat[,9]
+XX = as.matrix(dat[,-c(1,9)])
+doublesel.effect = rlassoEffect(x = XX, y = YY, d =DD, method = "double selection")
+summary(doublesel.effect)
+```
+
+## 3. Please explain your preliminary results
+Here I did **pscore matching** and **Double Selection**. The coefficient of `distance_working` estimated by these two methods are both insignificant, which show that there is no difference in well-being between distance workers and commuters.

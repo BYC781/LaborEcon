@@ -1,10 +1,21 @@
 clear all
 set more off
 
-cd "/Users/yihuai/Documents/yihuai/研究所/econometrics with machine learning/project/data"
+cd "/Users/bychen/Documents/LaborEcon/term"
 
-use sleeptime_clear.dta, clear
+use work/timeuse.dta, clear
 
-** descriptive statistics
-*averge: age, kids, sex, earnweek, marital staus, personal care(sleep), covid 
 
+
+// summary statistic
+sort distance_work
+by distance_work: sum wbladder
+
+sort female distance_work
+by female distance_work: sum wbladder
+
+sort hh_child distance_work
+by hh_child distance_work: sum wbladder
+
+sort female hh_child distance_work
+by female hh_child distance_work: sum wbladder
