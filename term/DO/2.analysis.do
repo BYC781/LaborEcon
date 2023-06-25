@@ -27,8 +27,10 @@ gen pscore = _pscore
 
 // Step 4: Post Matching Analysis – psmatch2
 pstest _pscore, density both
-pstest age female hh_child hh_size earnweek fullpart, both
+pstest age female hh_child hh_size earnweek fullpart wbladder, both
 
+
+sum age female hh_child hh_size earnweek fullpart wbladder if _treated == 0 & _support == 1
 
 // pscore hist
 twoway (hist _pscore if distance_work == 1, frac lcolor(gs12) fcolor(gs12)) ///
@@ -37,20 +39,20 @@ legend(order(1 "Remote worker" 2 "commuter" ))
 
 
 // sub-group
-psmatch2 $D $X if female ==1, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if female ==0, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if hh_child ==1, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if hh_child ==0, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if female ==1 & hh_child ==1, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if female ==0 & hh_child ==1, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if female ==1 & hh_child ==0, out($Y) logit n(3) ai(3)
-psmatch2 $D $X if female ==0 & hh_child ==0, out($Y) logit n(3) ai(3)
+psmatch2 $D $X if female ==1, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if female ==0, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if hh_child ==1, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if hh_child ==0, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if female ==1 & hh_child ==1, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if female ==0 & hh_child ==1, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if female ==1 & hh_child ==0, out($Y) logit n(3) ai(3) ate
+psmatch2 $D $X if female ==0 & hh_child ==0, out($Y) logit n(3) ai(3) ate
 
 
 // Robustness checks
-psmatch2 $D $X, out($Y) logit n(1) ai(1)
-psmatch2 $D $X, out($Y) logit n(2) ai(2)
-psmatch2 $D $X, out($Y) logit n(4) ai(4)
-psmatch2 $D $X, out($Y) logit n(5) ai(5)
+psmatch2 $D $X, out($Y) logit n(1) ai(1) ate
+psmatch2 $D $X, out($Y) logit n(2) ai(2) ate
+psmatch2 $D $X, out($Y) logit n(4) ai(4) ate
+psmatch2 $D $X, out($Y) logit n(5) ai(5) ate
 
 psmatch2 $D $X if pscore >= 0.2 & pscore<=0.4, out($Y) logit n(3) ai(3)
